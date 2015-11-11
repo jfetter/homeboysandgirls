@@ -8,7 +8,7 @@ var morgan = require('morgan');
 
 var app = express();
 
-app.set('view engine', 'jade');
+app.set('view engine','jade');
 
 // GENERAL MIDDLEWARE
 app.use(morgan('dev'));
@@ -18,11 +18,20 @@ app.use(express.static('public'));
 
 // ROUTES
 app.use('/', require('./routes/index'));
+app.use("/", require("./routes/contacts"));
+
+
+
+
 
 // 404 HANDLER
 app.use(function(req, res){
   res.status(404).render('404')
 })
+
+
+
+
 
 app.listen(PORT, function(){
   console.log('Listening on port ', PORT);
