@@ -1,9 +1,11 @@
 //routes
 
 "use strict";
+var express = require('express');
+var router = express.Router();
 
-app.get("/", function(req, res){
-	console.log("in the route")
+router.get("/", function(req, res){
+	console.log("in route")
 	res.send("I'm going to send you contact info \n")
 })
 
