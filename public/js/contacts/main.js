@@ -40,11 +40,11 @@ $('input').each(function(index, input) {
 
 function cRow(contact){
 	var $tr = $("<tr>");
-	var $tname = $("<td>").addClass("tname").text(clog.tname)
-	var $lname = $("<td>").addClass("lname").text(clog.lname)
-	var $email = $("<td>").addClass("email").text(clog.email)
-	var $phone = $("<td>").addClass("phone").text(clog.phone)
-	var $twitter = $("<td>").addClass("twitter").text(clog.twitter)
+	var $fname = $("<td>").addClass("tname").text(contact.tname)
+	var $lname = $("<td>").addClass("lname").text(contact.lname)
+	var $email = $("<td>").addClass("email").text(contact.email)
+	var $phone = $("<td>").addClass("phone").text(contact.phone)
+	var $twitter = $("<td>").addClass("twitter").text(contact.twitter)
  	var $edit = $("<button>").addClass("edit")
  	var $editPic = $("<i>").addClass("fa fa-pencil-square-o fa-lg")
  	var $delete = $("<button>").addClass("delete")
@@ -61,10 +61,11 @@ function cRow(contact){
 	function editContact(event) {
   console.log("editing contacts")
   var oldInfo = selectToEdit();
-  var newInfo = ; 
+  var newInfo ; 
   contact = {"newInfo": newInfo, "oldInfo": oldInfo()};
   $.post("/contacts/edit", contact)
-   
+   }
+
    function selectToEdit(){
    	var selection = {};
    	editLine = $(this).closest("tr");
@@ -84,9 +85,9 @@ function cRow(contact){
   // deleteContact(editLine);
    }
 
-  }
+  
 
-  function deleteContact(event){
+  function selectToDelete (event){
  	//   if ($("input").hasClass("editing")){
   //   console.log("editLine")
   //   var $targetRow = editLine;
