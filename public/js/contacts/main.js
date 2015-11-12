@@ -94,15 +94,14 @@ function cRow(contact){
   })
    }
 
-  function updateList(){
-  	
-  }
+  // function updateList(){}
 
   function selectToDelete (event){
    var thisRow = $(this).closest('tr')
    var rowIndex = thisRow.prevAll().length;
+   selection.rowIndex = rowIndex
    thisRow.remove(); 
- 		  $.post('/contacts/delete', rowIndex)
+ 		  $.post('/contacts/delete', selection )
   .done(function(data){
   	  console.log("post was done" , data)
   })

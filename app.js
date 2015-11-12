@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // ROUTES
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes'));
 app.use('/contacts', require('./routes/contacts'));
 //app.use("/clogs", require("./routes/clogs"));
 

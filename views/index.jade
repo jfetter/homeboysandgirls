@@ -5,7 +5,7 @@ title= title
 
   body
    .container
-        - var properties = ['name', 'phone', 'email']
+        - var properties = ['First name', 'Last name' ,'phone', 'email', 'twitter']
         .row
           h1= title
         .row
@@ -21,14 +21,7 @@ title= title
                   th= prop
                 th: th
             tbody#cList
-              each item, index in items
-                tr
-                  each prop in properties
-                    td(class= prop, id= prop)= items[index][prop]
-                  td.edit.text-center
-                    i.fa.fa-pencil-square-o.fa-lg
-                  td.delete.text-center
-                    i.fa.fa-trash-o.fa-lg
+
 
     script(src='bower_components/jquery/dist/jquery.min.js')
     script(src='js/contacts/main.js')

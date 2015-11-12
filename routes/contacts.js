@@ -28,8 +28,10 @@ router.post("/edit", function(req, res){
 })
 
 router.post("/delete", function(req, res){
-	var rowIndex = req.body
-	console.log("I'm in delete")
+	console.log(req.body)
+	var rowIndex = req.body.rowIndex
+
+	console.log("row index", rowIndex)
 	Contact.delete(rowIndex, function(err){
 		res.status(err ? 404 : 200).send(err || "contact deleted");
 	})
@@ -44,18 +46,5 @@ router.post("/", function(req, res){
 		res.status( err ? 400 : 200).send(err || "contact created");
 	})
 });
-	//i believe this will call the create function
-	// from the Contact model. 
-// 	Contact.create(cb);
-// 	res.send(req.body.input)
-// 	console.log("now contacts list is:", contacts);
-// 	return; 
-// })
-
-// router.delete("/" + id, function(req, res){
-// 	Contact.delete(cb);
-// 	console.log("now contacts list is:", contacts);
-// 	return
-// })
 
 module.exports  = router; 

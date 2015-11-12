@@ -33,19 +33,18 @@ Contact.create = function(contact, cb){
 	});
 };
 
-Contact.delete = function(cb){
-	Contact.find(function(err, rowIndex){
-		//var n = contact.length();
-		contacts = contacts.splice(rowIndex, 1);
+Contact.delete = function(rowIndex, cb){
+	Contact.find(function(err, contacts){
+		contacts.splice(rowIndex, 1);
 		console.log("now contacts is: ", contacts)
 		var data = JSON.stringify(contacts);
 		fs.writeFile(db, data, cb);
 	});
 };
 
-Contact.update = function(cb){
+Contact.edit = function(cb){
 	Contact.find(function(err, contacts){
-		  var contIndex = select();
+		  // var contIndex = select();
 		  contacts = contacts.splice(contIndex, 1, contact)
 			var data = JSON.stringify(contacts);
 			console.log("contacts: ", contacts)
@@ -61,16 +60,5 @@ function alphaB(param){
 	fs.writeFile(db, data, cb);
 	})
 }
-
-// this function will allow selection of one
-// particular contact (for editing and deleting)
-// function select () {
-// var ind;
-// contacts.forEach(function(item, index, all){
-//       if (contact === item) 
-//       ind = index;
-// })
-//  		return ind;
-// }
 
 module.exports = Contact; 
