@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+  head
+    title GUTEN CLOG!
+    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(href="css/style.css", type="text/css", rel="stylesheet")
+    .container
+      .row
+        h1 GUTEN CLOG!
+      .row
+        each val, prop in items[0]
+          label #{prop}:
+          input(id= prop)
+        button.btn#submit Add
+
+        .row
+          table.table
+            thead
+              tr
+                each val, prop in items[0]
+                  th= prop
+            tbody
+              each item in items
+                tr
+                  each val, prop in item
+                    td(class= prop, id= prop)= val
+
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='js/clogs.js')
