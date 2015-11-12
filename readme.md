@@ -1,3 +1,1 @@
-# Express Example
-
-First, cd into the project directory, and do `npm run setup` to install the dependencies listed in the package.json and bower.json.  Then you can start the server in Node.
+I can add contacts and delete them from both the front and back end, but I was not able to get jade to work so I was not able to get contact info to persist and load full contact list on loading of page. I started to do a seperate function for that, but didn't have time to finish. ALso didn't finish edit and sort functions. Wha Wha. 
