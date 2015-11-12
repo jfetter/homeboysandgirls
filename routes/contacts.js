@@ -11,12 +11,29 @@ var Contact = require("../models/contact")
 // request in main.js
 router.get("/", function(req, res){
 	Contact.find(function(err, contacts){
+
 		if (err) return res.status(400).send(err);
 		res.render ("contacts", {items: contacts});
 	});
 	console.log("get route:" , contacts);
 });
 
+router.post("/edit", function(req, res){
+	console.log("I'm in edit")
+	// var rowIndex = req.body
+	// console.log("I'm in delete")
+	// Contact.delete(rowIndex, function(err){
+	// 	res.status(err ? 404 : 200).send(err || "contact deleted");
+ console.log("I'm in post.edit")
+})
+
+router.post("/delete", function(req, res){
+	var rowIndex = req.body
+	console.log("I'm in delete")
+	Contact.delete(rowIndex, function(err){
+		res.status(err ? 404 : 200).send(err || "contact deleted");
+	})
+})
 
 //the js file wants to give info to the
 // json data base... 

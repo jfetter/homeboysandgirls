@@ -2,13 +2,17 @@
 
 var contact = {};
 
+var selection = {};
+
 $(document).ready(init);
 
 function init() {
   console.log('in it');
   $("#add").on("click", addContact)
+  //need to make the whole button clickable. 
   $("#cList").on("click", "i.fa-trash-o", selectToDelete)
  	$("#cList").on("click", "i.fa-pencil-square-o", selectToEdit)
+ 	$("#cList").on("click", ".doneEditing", sendEdits)
 }
 
 function addContact(){
@@ -46,9 +50,9 @@ function cRow(contact){
 	var $phone = $("<td>").addClass("phone").text(contact.phone)
 	var $twitter = $("<td>").addClass("twitter").text(contact.twitter)
  	var $edit = $("<button>").addClass("edit")
- 	var $editPic = $("<i>").addClass("fa fa-pencil-square-o fa-lg")
+ 	var $editPic = $("<i>").addClass("fa fa-pencil-square-o fa-lg").text("edit")
  	var $delete = $("<button>").addClass("delete")
- 	var $trash = $("<i>").addClass("fa fa-trash-o fa-lg")
+ 	var $trash = $("<i>").addClass("fa fa-trash-o fa-lg").text("trash")
 	$edit.append($editPic);
 	$delete.append($trash);
 
@@ -57,54 +61,55 @@ function cRow(contact){
 	return $tr; 
 }
 
- // function editContact(event) {
-	function editContact(event) {
-  console.log("editing contacts")
-  var oldInfo = selectToEdit();
-  var newInfo ; 
-  contact = {"newInfo": newInfo, "oldInfo": oldInfo()};
-  $.post("/contacts/edit", contact)
+
+ function selectToEdit(){
+
+  var thisRow = $(this).closest('tr')
+  var rowIndex = thisRow.prevAll().length;
+  selection.rowIndex = rowIndex;
+
+  $(this).siblings().addClass("editing")
+  $('.editing').replaceWith($("<input>"));
+  $(this).text("Done Editing").addClass("doneEditing")
+
+}
+
+   function sendEdits (){
+   	contact.fname = $(".editing").hasClass("#fname").val();
+   	contact.fname = $(".editing").hasClass("#fname").val();
+		contact.lname = $(".editing").hasClass("#lname").val();
+		contact.email = $(".editing").hasClass("#email").val();
+		contact.phone = $(".editing").hasClass("#phone").val();
+		contact.twitter = $(".editing").hasClass("#twit").val();
+    selection.newInfo = contact;
+   console.log("selection", selection)
+
+   $(".editing").removeClass;
+    $.post('/contacts/edit', selection)
+  .done(function(data){
+  	  console.log("post was done" , data)
+  })
+  .fail(function(err){
+    console.error(err);
+  })
    }
 
-   function selectToEdit(){
-   	var selection = {};
-   	editLine = $(this).closest("tr");
-		console.log("editLine", editLine);
-	//selection.fName = editLine.children(":nth-of-type(1)").text();
-  // eidtlName = editLine.children(":nth-of-type(2)").text();
-  // editEmail = editLine.children(":nth-of-type(3)").text();
-  // editPhone = editLine.children(":nth-of-type(4)").text();
-  // editTwitter = editLine.children(":nth-of-type(5)").text();
-  // console.log( editName);
-  // $("#fname").val(editfname);
-  // $("#lname").val(editlname)
-  // $("#email").val(editEmail);
-  // $("#phone").val(editPhone);
-  // $("#twit").val(editTwitter);
-  // $("input").addClass("editing")
-  // deleteContact(editLine);
-   }
-
-  
+  function updateList(){
+  	
+  }
 
   function selectToDelete (event){
- 	//   if ($("input").hasClass("editing")){
-  //   console.log("editLine")
-  //   var $targetRow = editLine;
-  //   console.log($targetRow)
-  //   $("input").removeClass("remove");
-  // } else {
-  // console.log("Deleting an entry")
-  // var $this = $(this);
-  // console.log("$this: ", $this);
-  // var $targetRow = $this.closest('tr');
-  // console.log("$targetRow:" ,$targetRow)
-  // }
-  // var index = $targetRow.index();
-  // contacts.splice(index, 1);
-  // updateContacts();
- 
-  	return;
+   var thisRow = $(this).closest('tr')
+   var rowIndex = thisRow.prevAll().length;
+   thisRow.remove(); 
+ 		  $.post('/contacts/delete', rowIndex)
+  .done(function(data){
+  	  console.log("post was done" , data)
+  })
+  .fail(function(err){
+    console.error(err);
+  })
+
   }
 
 

@@ -34,10 +34,9 @@ Contact.create = function(contact, cb){
 };
 
 Contact.delete = function(cb){
-	Contact.find(function(err, contacts){
-		var contIndex = select(); //prob can combine
+	Contact.find(function(err, rowIndex){
 		//var n = contact.length();
-		contacts = contacts.splice(contIndex, 1);
+		contacts = contacts.splice(rowIndex, 1);
 		console.log("now contacts is: ", contacts)
 		var data = JSON.stringify(contacts);
 		fs.writeFile(db, data, cb);
@@ -65,13 +64,13 @@ function alphaB(param){
 
 // this function will allow selection of one
 // particular contact (for editing and deleting)
-function select () {
-var ind;
-contacts.forEach(function(item, index, all){
-      if (contact === item) 
-      ind = index;
-})
- 		return ind;
-}
+// function select () {
+// var ind;
+// contacts.forEach(function(item, index, all){
+//       if (contact === item) 
+//       ind = index;
+// })
+//  		return ind;
+// }
 
 module.exports = Contact; 

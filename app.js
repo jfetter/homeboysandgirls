@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// RTES
-app.use('/', require('./routes'));
-app.use("/contacts", require("./routes/contacts"));
+// ROUTES
+app.use('/', require('./routes/index'));
+app.use('/contacts', require('./routes/contacts'));
 //app.use("/clogs", require("./routes/clogs"));
 
 // 404 HANDLER
