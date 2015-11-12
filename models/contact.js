@@ -4,7 +4,7 @@
 var fs = require("fs");
 
 var Contact = {};
-var db = "'db/contacts.json";
+var db = "db/contacts.json";
 
 // I believe the variable contact is brought in by
 // way of call back functions from the router...
@@ -24,11 +24,12 @@ Contact.find = function(cb){
 }//Contact.find
 
 Contact.create = function(contact, cb){
-	Contact.find = (function(err, contacts){
+	console.log("in create")
+	Contact.find (function(err, contacts){
 		contacts.push(contact);
 			var data = JSON.stringify(contacts);
-			fs.writeFile(db, data);
 			console.log("all contacts: ", data);
+			fs.writeFile(db, data, cb);
 	});
 };
 

@@ -22,7 +22,7 @@ router.get("/", function(req, res){
 // json data base... 
 router.post("/", function(req, res){	
 	var contact = req.body;
-	console.log(req.body )
+	console.log("in post route:", contact )
 	Contact.create(contact, function(err){
 		res.status( err ? 400 : 200).send(err || "contact created");
 	})

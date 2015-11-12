@@ -1,5 +1,1 @@
-[
-  {"fName": "Jillian", "lName": "Fetter", "email": "jillian.fetter@gmail.com", "phone": "650-773-0364", "twitter": "@jillian.fetter"},
-  {"fName": "Arthur", "lName": "Wilkes", "email": "69Cougar69@gmail.com", "phone": "480-242-0474", "twitter": "@badassmotha"},
-  {"fName": "TEST", "lName": "MCTEST", "email": "test@test.com", "phone": "1-800-tes-tnow", "twitter": "@test"}
-]
+[{"fName":"Jillian","lName":"Fetter","email":"jillian.fetter@gmail.com","phone":"650-773-0364","twitter":"@jillian.fetter"},{"fName":"Arthur","lName":"Wilkes","email":"69Cougar69@gmail.com","phone":"480-242-0474","twitter":"@badassmotha"},{"fName":"TEST","lName":"MCTEST","email":"test@test.com","phone":"1-800-tes-tnow","twitter":"@test"},{"fname":"","lname":"","email":"","phone":"","twitter":""},{"fname":"","lname":"","email":"","phone":"","twitter":""}]

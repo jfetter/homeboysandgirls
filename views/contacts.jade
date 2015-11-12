@@ -18,8 +18,20 @@ title= title
         | Phone
         input#twit(type='text')
         | twitter
-        button#submit ADD
+        button#add ADD
         p Edit/Delete
+         .row
+        table.table.table-hover
+          thead
+            tr.col-sm-2.col-md-2.col-lg.2
+              th.col-sm-2.col-md-2.col-lg.2 First Name
+              th.col-sm-2.col-md-2.col-lg.2 Last Name
+              th.col-sm-2.col-md-2.col-lg.2 email
+              th.col-sm-2.col-md-2.col-lg.2 Phone
+              th.col-sm-2.col-md-2.col-lg.2 Twitter
+              th.col-sm-2.col-md-2.col-lg.2 Edit/Delete
+            tr
+          tbody#cList
 
     script(src='bower_components/jquery/dist/jquery.min.js')
     script(src='js/contacts/main.js')
