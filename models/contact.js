@@ -27,7 +27,7 @@ Contact.create = function(contact, cb){
 	Contact.find = (function(err, contacts){
 		contacts.push(contact);
 			var data = JSON.stringify(contacts);
-			fs.writeFile(db, data, cb);
+			fs.writeFile(db, data);
 			console.log("all contacts: ", data);
 	});
 };
@@ -49,7 +49,7 @@ Contact.update = function(cb){
 		  contacts = contacts.splice(contIndex, 1, contact)
 			var data = JSON.stringify(contacts);
 			console.log("contacts: ", contacts)
-			fs.writeFile(db, data, cb);
+			fs.writeFile(db, data);
 	})
 }
 // alphabatize the list by a certain 

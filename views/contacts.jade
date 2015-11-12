@@ -1,0 +1,25 @@
+title= title
+    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css", rel='stylesheet')
+    link(href="bower_components/font-awesome/css/font-awesome.min.css", rel='stylesheet')
+    link(href="css/style.css", rel='stylesheet')
+
+  body
+    .container
+      .row
+        h1  MY HOMMIES
+      .row
+        input#fname(type='text')
+        | First Name
+        input#lname(type='text')
+        | Last Name
+        input#email(type='text')
+        | email
+        input#phone(type='text')
+        | Phone
+        input#twit(type='text')
+        | twitter
+        button#submit ADD
+        p Edit/Delete
+
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='js/contacts/main.js')
